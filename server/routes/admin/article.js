@@ -4,7 +4,7 @@ module.exports = (app, plugin, model) => {
     
     let { Counter, Article, Subscribe } = model
     let { GetPage, RequestResult, Email } = plugin
-
+    console.log(plugin);
     // 获取文章
     router.get('/article', async (req, res) => {
         const data = await GetPage(Article, req.query.page, req.query.count)

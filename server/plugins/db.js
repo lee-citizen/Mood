@@ -4,7 +4,7 @@ module.exports = app => {
     mongoose.connect('mongodb://mongodb:27017/admin', {
         useNewUrlParser: true, 
         useUnifiedTopology: true,
-        useFindAndModify: false
+        // useFindAndModify: false
     })
     mongoose.connection.once("open", function(){
         console.log('mongoose success ~ ~')

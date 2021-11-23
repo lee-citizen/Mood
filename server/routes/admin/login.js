@@ -1,10 +1,11 @@
 module.exports = (app, plugin, model) => {
+   
     const express = require('express');
     const router = express.Router();
     
     let { User, Info } = model
     let { RequestResult, Email } = plugin
-
+    console.log(plugin);
     const crypto = require('crypto');
     const jwt = require('jsonwebtoken');
 
@@ -22,10 +23,10 @@ module.exports = (app, plugin, model) => {
                         password: passwords
                     }
                 }, (err, doc) => {
-                    res.send(RequestResult(1, '密码修改成功'))
+                    res.send(plugin.RequestResult(1, '密码修改成功'))
                 })
             } else {
-                res.send(RequestResult('原密码输入错误'))
+                res.send(plugin.RequestResult('原密码输入错误'))
             }
         })
     })
