@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import Comment from '@/components/Comment'
+import Comment from '@/components/comment'
 import Pagination from '@/components/Pagination'
 export default {
     components: { 

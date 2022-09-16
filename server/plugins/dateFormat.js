@@ -1,7 +1,7 @@
 // 时间戳 转换
 function dateFormat(timestamp) {
     const w = new Date(timestamp).getDay()
-
+    console.log(timestamp);
     timestamp = timestamp.toString().replace(/-|\:|\/|\ /g, ',').split(',')
     
     const week = ['日', '一', '二', '三', '四', '五', '六']

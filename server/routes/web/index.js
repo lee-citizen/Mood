@@ -3,7 +3,7 @@ module.exports = (app, plugin, model) => {
     const router = express.Router();
 
     let { Info, Comment, Counter, Article, Envelope, Myself, Subscribe } = model
-    let { time, Email, DateFormat, RequestResult } = plugin
+    let { time, Email, dateFormat, RequestResult } = plugin
 
     router.get('/info', async (req, res) => {
         const info = await Info.findOne()
@@ -18,7 +18,7 @@ module.exports = (app, plugin, model) => {
             Article.find({hide:false}).sort({time:-1}).limit(Number(10)).skip(Number(10)*(page-1))
         ])
 
-        result[1].forEach(item => item._doc['time'] = DateFormat(item.time))
+        result[1].forEach(item => item._doc['time'] = dateFormat(item.time))
 
         // 列表页 分组
         if (req.query.from) {
@@ -56,7 +56,7 @@ module.exports = (app, plugin, model) => {
             new: true
         })
         if (data) {
-            data._doc['time'] = DateFormat(data.time)
+            data._doc['time'] = dateFormat(data.time)
             res.send(RequestResult(1, data))
         } else {
             res.send(RequestResult())
@@ -70,7 +70,7 @@ module.exports = (app, plugin, model) => {
 
         // 一级评论和子级评论格式转化
         const data = result.reduce((total, item, index, arr) => {    
-            item._doc['time'] = DateFormat(item.time)
+            item._doc['time'] = dateFormat(item.time)
             if(item.type === 1){
                 item._doc['child'] = []
                 total.push(item)
@@ -121,7 +121,7 @@ module.exports = (app, plugin, model) => {
         if (result.type === 1) {
             result._doc['child'] = [];
         }
-        result._doc['time'] = DateFormat(result.time)
+        result._doc['time'] = dateFormat(result.time)
 
         res.send(RequestResult(1, result))
         

@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import Date from '@/components/Date'
+import Date from '@/components/date'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 export default {

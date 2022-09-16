@@ -76,9 +76,19 @@ export default {
                     path: '/setting',
                 },
                 {
+                    icon: 'el-icon-sunset',
+                    title: 'Classify',
+                    path: '/classify',
+                },
+                {
+                    icon: 'el-icon-sunset',
+                    title: 'Avatar',
+                    path: '/avatar',
+                },
+                {
                     icon: 'el-icon-moon-night',
                     title: 'Leave',
-                }
+                },
             ],
             activeIndex: '',
             show: false,

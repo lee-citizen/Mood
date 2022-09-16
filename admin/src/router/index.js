@@ -56,6 +56,26 @@ const routes = [
 				name: "setting",
 				component: resolve => require(['@/views/setting'], resolve)
 			},
+			{
+				path: '/classify',
+				name: "classify",
+				component: resolve => require(['@/views/classify/list'], resolve)
+			},
+			{
+				path: '/classify/info',
+				name: "classifyInfo",
+				component: resolve => require(['@/views/classify/info'], resolve)
+			},
+			{
+				path: '/avatar',
+				name: "avatar",
+				component: resolve => require(['@/views/avatar/list'], resolve)
+			},
+			{
+				path: '/avatar/info',
+				name: "avatarInfo",
+				component: resolve => require(['@/views/avatar/info'], resolve)
+			},
 		]
 	},
 	{
@@ -84,7 +104,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	let list = ['/article/info', '/envelope/info']
+	let list = ['/article/info', '/envelope/info','/classify/info','avatar/info']
 	let name = list.indexOf(to.path) > -1 ? '/' + to.path.split('/')[1] : to.path
 
 	store.commit('setMenu', name)

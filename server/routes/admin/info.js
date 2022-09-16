@@ -3,7 +3,7 @@ module.exports = (app, plugin, model) => {
     const router = express.Router()
     
     let { Info, Comment, Article, Envelope } = model
-    let { DateFormat, RequestResult } = plugin
+    let { dateFormat, RequestResult } = plugin
 
     router.get('/info', (req, res) => {
         Promise.all([
@@ -14,7 +14,7 @@ module.exports = (app, plugin, model) => {
             Comment.countDocuments(),
             Comment.find({status: 1}).countDocuments()
         ]).then(result => {
-            result[2].forEach(item => item._doc['time'] = DateFormat(item.time) )
+            result[2].forEach(item => item._doc['time'] = dateFormat(item.time) )
             const key = [
                 'info',         // 个人信息
                 'article',      // 第一条文章
