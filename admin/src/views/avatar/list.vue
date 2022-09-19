@@ -51,7 +51,6 @@
         classifyList: [],
         total: 0,
         page: 1,
-        classify_id: '',
         options: [
             // {
             // icon: 'el-icon-view',
@@ -67,6 +66,7 @@
             }
         ],
         classify_id:'',
+        id:'',
         }
     },
     created() {
@@ -75,10 +75,10 @@
     },
     methods: {
         classifyChange(e){
-            if (this.classify_id!=e) {
+            if (this.id !=e) {
                 this.page = 1;
             }
-            this.classify_id = e;
+            this.id = e;
             this.load(this.page,e)
         },
         loadClassify() {
@@ -90,7 +90,6 @@
                 }
             })
             .then(res => {
-                console.log(res.data.body.data)
                 this.classifyList = res.data.body.data
             })
         )
@@ -102,7 +101,7 @@
         this.$request(() =>
             this.$http
             .get('/avatar', {
-                params: { page,classify_id:this.classify_id }
+                params: { page:page||this.page,classify_id:this.id }
             })
             .then(res => {
                 ;['data', 'total', 'page'].map(i => (this[i] = res.data.body[i]))
