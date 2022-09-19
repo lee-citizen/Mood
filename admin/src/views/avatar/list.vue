@@ -75,7 +75,7 @@
     },
     methods: {
         classifyChange(e){
-            if (this.classify_id !=e) {
+            if (this.classify_id!=e) {
                 this.page = 1;
             }
             this.classify_id = e;
@@ -98,11 +98,11 @@
         newArticle() {
         this.$router.push('/avatar/info')
         },
-        load(page,classify_id) {
+        load(page) {
         this.$request(() =>
             this.$http
             .get('/avatar', {
-                params: { page,classify_id }
+                params: { page,classify_id:this.classify_id }
             })
             .then(res => {
                 ;['data', 'total', 'page'].map(i => (this[i] = res.data.body[i]))
