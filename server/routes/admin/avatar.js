@@ -7,7 +7,7 @@ module.exports = (app, plugin, model) => {
 
   router.get('/avatar', async (req, res) => {
     let screen = req.query.classify_id ? { classify_id: req.query.classify_id } : null
-    const data = await GetPage(Avatar, req.query.page, 10, screen)
+    const data = await GetPage(Avatar, req.query.page, req.query.count,screen)
     res.send(RequestResult(null, data))
   })
 

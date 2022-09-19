@@ -74,6 +74,7 @@
     },
     methods: {
         classifyChange(e){
+            this.page = 1;
             this.load(this.page,e)
         },
         loadClassify() {
