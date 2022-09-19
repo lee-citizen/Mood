@@ -65,7 +65,8 @@
             icon: 'el-icon-delete',
             text: 'Delete'
             }
-        ]
+        ],
+        classify_id:'',
         }
     },
     created() {
@@ -74,7 +75,10 @@
     },
     methods: {
         classifyChange(e){
-            this.page = 1;
+            if (this.classify_id !=e) {
+                this.page = 1;
+            }
+            this.classify_id = e;
             this.load(this.page,e)
         },
         loadClassify() {

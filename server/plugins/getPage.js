@@ -10,7 +10,7 @@ const dateFormat = require('./dateFormat')
 
 async function GetPage(db, page = 1, size = 10, screen) {
     const result = await Promise.all([
-        db.countDocuments(),
+        db.countDocuments(screen),
         db
         .find(screen)
         .sort({ time: -1 })
