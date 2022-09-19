@@ -1,9 +1,8 @@
 // 时间戳 转换
 function dateFormat(timestamp) {
+    timestamp = getExactTime(timestamp)
     const w = new Date(timestamp).getDay()
-    console.log(timestamp);
     timestamp = timestamp.toString().replace(/-|\:|\/|\ /g, ',').split(',')
-    
     const week = ['日', '一', '二', '三', '四', '五', '六']
     const month = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二']
     const weekEn = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -50,6 +49,18 @@ function dateFormat(timestamp) {
         }
     }
     return time
+}
+
+function getExactTime(time) {
+    var date = new Date(time);
+    // var date = new Date(time* 1000);
+    var year = date.getFullYear() + '-';
+    var month = (date.getMonth()+1 < 10 ? '0' + (date.getMonth()+1) : date.getMonth()+1) + '-';
+    var dates = date.getDate() + ' ';
+    var hour = date.getHours() + ':';
+    var min = date.getMinutes() + ':';
+    var second = date.getSeconds();
+    return year + month + dates + hour + min + second ;
 }
 
 module.exports = dateFormat
